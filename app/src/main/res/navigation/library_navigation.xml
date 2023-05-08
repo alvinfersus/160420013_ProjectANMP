@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/library_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ubaya.a160420013_projectanmp.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment2"
+            app:destination="@id/itemHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.ubaya.a160420013_projectanmp.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment2"
+            app:destination="@id/itemFavorite" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookListFragment2"
+            app:destination="@id/itemBooks" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment2"
+            app:destination="@id/itemHistory" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemBooks"
+        android:name="com.ubaya.a160420013_projectanmp.BookListFragment"
+        android:label="fragment_book_list"
+        tools:layout="@layout/fragment_book_list" >
+        <action
+            android:id="@+id/action_bookListFragment2_to_bookDetailFragment2"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.ubaya.a160420013_projectanmp.BookDetailFragment"
+        android:label="fragment_book_detail"
+        tools:layout="@layout/fragment_book_detail" >
+        <action
+            android:id="@+id/action_bookDetailFragment2_to_reviewFragment2"
+            app:destination="@id/reviewFragment" />
+        <action
+            android:id="@+id/action_bookDetailFragment_to_bookListFragment"
+            app:destination="@id/itemBooks" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.ubaya.a160420013_projectanmp.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" >
+        <action
+            android:id="@+id/action_reviewFragment_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.a160420013_projectanmp.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment2_to_detailHistoryFragment2"
+            app:destination="@id/detailHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailHistoryFragment"
+        android:name="com.ubaya.a160420013_projectanmp.DetailHistoryFragment"
+        android:label="fragment_detail_history"
+        tools:layout="@layout/fragment_detail_history" >
+        <action
+            android:id="@+id/action_detailHistoryFragment_to_historyFragment"
+            app:destination="@id/itemHistory" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFavorite"
+        android:name="com.ubaya.a160420013_projectanmp.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.a160420013_projectanmp.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
