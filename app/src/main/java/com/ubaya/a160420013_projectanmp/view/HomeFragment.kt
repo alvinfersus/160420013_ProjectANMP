@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ubaya.a160420013_projectanmp.R
 import com.ubaya.a160420013_projectanmp.util.loadImage
 import com.ubaya.a160420013_projectanmp.viewmodel.BookListViewModel
@@ -38,7 +37,7 @@ class HomeFragment : Fragment() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.refresh()
 
-        val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+        val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
         recView?.layoutManager = LinearLayoutManager(context)
         recView?.adapter = booksListAdapter
         observeViewModel()
@@ -61,7 +60,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarHome)
 
             if(it == true) {

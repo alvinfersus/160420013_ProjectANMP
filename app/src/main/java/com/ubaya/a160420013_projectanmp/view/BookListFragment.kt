@@ -31,13 +31,13 @@ class BookListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
         viewModel.refresh()
 
-        val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+        val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
         recView?.layoutManager = LinearLayoutManager(context)
         recView?.adapter = booksListAdapter
         observeViewModel()
         val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
         refreshLayout?.setOnRefreshListener {
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
             recView?.visibility = View.GONE
 
             val txtError = view?.findViewById<TextView>(R.id.txtErrorBooks)
@@ -67,7 +67,7 @@ class BookListFragment : Fragment() {
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
 
             if(it == true) {

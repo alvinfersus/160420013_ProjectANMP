@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ubaya.a160420013_projectanmp.R
-import com.ubaya.a160420013_projectanmp.viewmodel.BookListViewModel
 import com.ubaya.a160420013_projectanmp.viewmodel.FavoriteListViewModel
 
 class FavoriteFragment : Fragment() {
@@ -36,20 +35,20 @@ class FavoriteFragment : Fragment() {
         recView?.layoutManager = LinearLayoutManager(context)
         recView?.adapter = favListAdapter
         observeViewModel()
-//        val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-//        refreshLayout?.setOnRefreshListener {
-//            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
-//            recView?.visibility = View.GONE
-//
-//            val txtError = view?.findViewById<TextView>(R.id.txtErrorBooks)
-//            txtError?.visibility = View.GONE
-//
-//            val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
-//            progressLoad?.visibility = View.VISIBLE
-//
-//            viewModel.refresh()
-//            refreshLayout?.isRefreshing = false
-//        }
+        val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
+        refreshLayout?.setOnRefreshListener {
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            recView?.visibility = View.GONE
+
+            val txtError = view?.findViewById<TextView>(R.id.txtErrorBooks)
+            txtError?.visibility = View.GONE
+
+            val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
+            progressLoad?.visibility = View.VISIBLE
+
+            viewModel.refresh()
+            refreshLayout?.isRefreshing = false
+        }
     }
 
     fun observeViewModel(){

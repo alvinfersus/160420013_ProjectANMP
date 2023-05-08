@@ -15,7 +15,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ubaya.a160420013_projectanmp.R
 import com.ubaya.a160420013_projectanmp.util.loadImage
 import com.ubaya.a160420013_projectanmp.viewmodel.UserViewModel
-import org.w3c.dom.Text
 
 class ProfileFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
@@ -83,7 +82,7 @@ class ProfileFragment : Fragment() {
         })
 
         viewModel.loadingUser.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
 
             if(it == true) {
