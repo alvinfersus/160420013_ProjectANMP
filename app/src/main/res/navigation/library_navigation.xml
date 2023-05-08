@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.ubaya.a160420013_projectanmp.LoginFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHome"
-        android:name="com.ubaya.a160420013_projectanmp.HomeFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -34,16 +34,16 @@
     </fragment>
     <fragment
         android:id="@+id/itemBooks"
-        android:name="com.ubaya.a160420013_projectanmp.BookListFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.BookListFragment"
         android:label="fragment_book_list"
         tools:layout="@layout/fragment_book_list" >
         <action
-            android:id="@+id/action_bookListFragment2_to_bookDetailFragment2"
+            android:id="@+id/actionBookDetail"
             app:destination="@id/bookDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
-        android:name="com.ubaya.a160420013_projectanmp.BookDetailFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.BookDetailFragment"
         android:label="fragment_book_detail"
         tools:layout="@layout/fragment_book_detail" >
         <action
@@ -52,10 +52,13 @@
         <action
             android:id="@+id/action_bookDetailFragment_to_bookListFragment"
             app:destination="@id/itemBooks" />
+        <argument
+            android:name="book_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/reviewFragment"
-        android:name="com.ubaya.a160420013_projectanmp.ReviewFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.ReviewFragment"
         android:label="fragment_review"
         tools:layout="@layout/fragment_review" >
         <action
@@ -64,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHistory"
-        android:name="com.ubaya.a160420013_projectanmp.HistoryFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
@@ -73,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailHistoryFragment"
-        android:name="com.ubaya.a160420013_projectanmp.DetailHistoryFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.DetailHistoryFragment"
         android:label="fragment_detail_history"
         tools:layout="@layout/fragment_detail_history" >
         <action
@@ -82,12 +85,12 @@
     </fragment>
     <fragment
         android:id="@+id/itemFavorite"
-        android:name="com.ubaya.a160420013_projectanmp.FavoriteFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/itemProfile"
-        android:name="com.ubaya.a160420013_projectanmp.ProfileFragment"
+        android:name="com.ubaya.a160420013_projectanmp.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
