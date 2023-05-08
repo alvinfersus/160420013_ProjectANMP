@@ -87,7 +87,11 @@
         android:id="@+id/itemFavorite"
         android:name="com.ubaya.a160420013_projectanmp.view.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/actionBookDetail"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.ubaya.a160420013_projectanmp.view.ProfileFragment"

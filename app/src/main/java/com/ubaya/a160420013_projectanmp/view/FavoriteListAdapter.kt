@@ -1,6 +1,5 @@
 package com.ubaya.a160420013_projectanmp.view
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +13,16 @@ import com.ubaya.a160420013_projectanmp.R
 import com.ubaya.a160420013_projectanmp.model.Book
 import com.ubaya.a160420013_projectanmp.util.loadImage
 
-class BookListAdapter(val bookList:ArrayList<Book>) : RecyclerView.Adapter<BookListAdapter.BookViewHolder>() {
-    class BookViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+class FavoriteListAdapter(val bookList:ArrayList<Book>) : RecyclerView.Adapter<FavoriteListAdapter.FavViewHolder>() {
+    class FavViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.book_list_item, parent, false)
-        return BookViewHolder(view)
+        return FavViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavViewHolder, position: Int) {
         val txtBookName = holder.view.findViewById<TextView>(R.id.txtBookName)
         val txtWriter = holder.view.findViewById<TextView>(R.id.txtWriter)
         val txtCategory = holder.view.findViewById<TextView>(R.id.txtCategories)
@@ -39,7 +38,7 @@ class BookListAdapter(val bookList:ArrayList<Book>) : RecyclerView.Adapter<BookL
         txtRating.text = "Rating : " + bookList[position].rate.toString()
 
         btnDetail.setOnClickListener{
-            val action = BookListFragmentDirections.actionBookDetail(bookList[position].id.toString())
+            val action = FavoriteFragmentDirections.actionBookDetail(bookList[position].id.toString())
             Navigation.findNavController(it).navigate(action)
         }
     }

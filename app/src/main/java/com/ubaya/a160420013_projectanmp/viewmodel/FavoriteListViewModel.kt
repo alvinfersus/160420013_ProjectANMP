@@ -12,27 +12,35 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.a160420013_projectanmp.model.Book
 
-class DetailBookViewModel (application: Application): AndroidViewModel(application){
-    val booksLD = MutableLiveData<Book>()
+class FavoriteListViewModel(application: Application): AndroidViewModel(application) {
+    val booksLD = MutableLiveData<ArrayList<Book>>()
+    val booksLoadErrorLD = MutableLiveData<Boolean>()
+    val loadingLD = MutableLiveData<Boolean>()
 
-    val TAG = "volleyTagBookDetail"
+    val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-    fun fetch(book_id:String){
+    fun refresh(){
+        loadingLD.value = true
+        booksLoadErrorLD.value = false
+
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/book_list.php?book_id="+book_id
+        val url = "http://10.0.2.2/anmp/favorite_list.php?user_id=160420013"
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                val sType = object : TypeToken<Book>() { }.type
-                val result = Gson().fromJson<Book>(it, sType)
+                val sType = object : TypeToken<ArrayList<Book>>() { }.type
+                val result = Gson().fromJson<ArrayList<Book>>(it, sType)
                 booksLD.value = result
 
-                Log.d("showvoleyBookDetail", result.toString())
+                loadingLD.value = false
+                Log.d("showvoley", result.toString())
             },
             {
-                Log.d("showvoleyBookDetail", it.toString())
+                Log.d("showvoley", it.toString())
+                booksLoadErrorLD.value = false
+                loadingLD.value = false
             })
 
         stringRequest.tag = TAG
