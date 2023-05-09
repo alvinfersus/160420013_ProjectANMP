@@ -1,5 +1,7 @@
 package com.ubaya.a160420013_projectanmp.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,8 +30,13 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var sharedFile = "com.ubaya.a160420013_projectanmp"
+        var shared: SharedPreferences = this.requireActivity().getSharedPreferences(sharedFile,
+            Context.MODE_PRIVATE )
+        var user_id: String? = shared.getString("user_id", "")
+
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refresh(this.requireActivity(), user_id)
 
         observeViewModel(view)
         val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)

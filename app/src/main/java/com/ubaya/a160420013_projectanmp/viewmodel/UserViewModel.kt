@@ -1,7 +1,11 @@
 package com.ubaya.a160420013_projectanmp.viewmodel
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
@@ -20,12 +24,12 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     val TAG = "volleyTagUser"
     private var queue: RequestQueue? = null
 
-    fun refresh(){
+    fun refresh(activities:FragmentActivity, user_id:String?, user_password:String = ""){
         loadingUser.value = true
         UserLoadError.value = false
 
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/user_list.php?user_id=160420013"
+        val url = "http://10.0.2.2/anmp/user_list.php?user_id="+user_id+"&password="+user_password
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
