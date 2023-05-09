@@ -5,18 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.ubaya.a160420013_projectanmp.R
 import com.ubaya.a160420013_projectanmp.util.loadImage
 import com.ubaya.a160420013_projectanmp.viewmodel.DetailBookViewModel
 
 class BookDetailFragment : Fragment() {
     private lateinit var viewModel: DetailBookViewModel
-
+    private var book_id:String = "0"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +30,6 @@ class BookDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailBookViewModel::class.java)
-        var book_id:String = "0"
         arguments?.let {
             book_id = BookDetailFragmentArgs.fromBundle(requireArguments()).bookId.toString()
         }
@@ -45,6 +46,7 @@ class BookDetailFragment : Fragment() {
             val txtSynopsis = view?.findViewById<TextView>(R.id.txtSynopsis)
             val imgBook = view?.findViewById<ImageView>(R.id.imgBook)
             val progressBarBookImg = view?.findViewById<ProgressBar>(R.id.progressBarBookImg)
+            val btnReadMore = view?.findViewById<Button>(R.id.btnReadMore)
 
             val txtCategoriesAns = view?.findViewById<TextView>(R.id.txtCategoriesAns)
             val txtBookIDAns = view?.findViewById<TextView>(R.id.txtBookIDAns)
@@ -57,6 +59,7 @@ class BookDetailFragment : Fragment() {
             txtWriter?.text = viewModel.booksLD.value?.writer
             txtCategory?.text = viewModel.booksLD.value?.category
             txtRate?.text = "Rate : " + viewModel.booksLD.value?.rate
+            val fullSynopsis:String? = it?.synopsis
             if(it.synopsis!=null){
                 if(it.synopsis.length > 245){
                     txtSynopsis?.text = it.synopsis?.substring(0,245) + "..."
@@ -68,9 +71,23 @@ class BookDetailFragment : Fragment() {
             txtLangAns?.text = viewModel.booksLD.value?.languages
             txtPagesAns?.text = viewModel.booksLD.value?.pages + " Pages"
             txtPubAns?.text = viewModel.booksLD.value?.publisher
+            var imageurl:String? = viewModel.booksLD.value?.image_url
 
             if(progressBarBookImg != null){
                 imgBook?.loadImage(viewModel.booksLD.value?.image_url, progressBarBookImg)
+            }
+
+            btnReadMore?.setOnClickListener {
+                val action = BookDetailFragmentDirections.actionReadMore(
+                    txtBookName?.text.toString(),
+                    txtWriter?.text.toString(),
+                    txtCategory?.text.toString(),
+                    txtRate?.text.toString(),
+                    fullSynopsis!!,
+                    book_id,
+                    imageurl!!
+                )
+                Navigation.findNavController(it).navigate(action)
             }
         })
     }
