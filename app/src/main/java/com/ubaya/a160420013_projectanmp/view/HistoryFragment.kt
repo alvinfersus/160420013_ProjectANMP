@@ -31,13 +31,13 @@ class HistoryFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HistoryListViewModel::class.java)
         viewModel.refresh()
 
-        val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+        val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
         recView?.layoutManager = LinearLayoutManager(context)
         recView?.adapter = historyListAdapter
         observeViewModel()
         val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
         refreshLayout?.setOnRefreshListener {
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
             recView?.visibility = View.GONE
 
             val txtError = view?.findViewById<TextView>(R.id.txtErrorHistory)
@@ -67,7 +67,7 @@ class HistoryFragment : Fragment() {
         })
 
         viewModel.loadingHistoryLD.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarHistory)
 
             if(it == true) {

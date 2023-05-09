@@ -82,7 +82,7 @@ class ProfileFragment : Fragment() {
         })
 
         viewModel.loadingUser.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
 
             if(it == true) {

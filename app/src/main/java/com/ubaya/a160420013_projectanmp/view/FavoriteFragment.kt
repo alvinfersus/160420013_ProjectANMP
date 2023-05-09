@@ -37,7 +37,7 @@ class FavoriteFragment : Fragment() {
         observeViewModel()
         val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
         refreshLayout?.setOnRefreshListener {
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
             recView?.visibility = View.GONE
 
             val txtError = view?.findViewById<TextView>(R.id.txtErrorBooks)

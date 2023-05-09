@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.refresh()
 
-        val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+        val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
         recView?.layoutManager = LinearLayoutManager(context)
         recView?.adapter = booksListAdapter
         observeViewModel()
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer{
-            val recView = view?.findViewById<RecyclerView>(R.id.recViewHistory)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarHome)
 
             if(it == true) {
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
 
     fun observeUserViewModel(view:View){
         userViewModel.userData.observe(viewLifecycleOwner, Observer{
-            val txtUserName = view.findViewById<TextView>(R.id.txtNameHome)
+            val txtUserName = view.findViewById<TextView>(R.id.txtNameReivewer)
             val txtUserID = view.findViewById<TextView>(R.id.txtUserIDHome)
             val imgProfile = view.findViewById<ImageView>(R.id.imgProfileHome)
             val progressBarProfile = view.findViewById<ProgressBar>(R.id.progressBarProfile)

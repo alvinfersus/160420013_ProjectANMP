@@ -47,6 +47,7 @@ class BookDetailFragment : Fragment() {
             val imgBook = view?.findViewById<ImageView>(R.id.imgBook)
             val progressBarBookImg = view?.findViewById<ProgressBar>(R.id.progressBarBookImg)
             val btnReadMore = view?.findViewById<Button>(R.id.btnReadMore)
+            val btnShowReview = view?.findViewById<Button>(R.id.btnShowReview)
 
             val txtCategoriesAns = view?.findViewById<TextView>(R.id.txtCategoriesAns)
             val txtBookIDAns = view?.findViewById<TextView>(R.id.txtBookIDAns)
@@ -59,12 +60,17 @@ class BookDetailFragment : Fragment() {
             txtWriter?.text = viewModel.booksLD.value?.writer
             txtCategory?.text = viewModel.booksLD.value?.category
             txtRate?.text = "Rate : " + viewModel.booksLD.value?.rate
-            val fullSynopsis:String? = it?.synopsis
-            if(it.synopsis!=null){
-                if(it.synopsis.length > 245){
-                    txtSynopsis?.text = it.synopsis?.substring(0,245) + "..."
-                }
+            txtSynopsis?.text = viewModel.booksLD.value?.synopsis
+
+            if (txtSynopsis!!.text.length > 245){
+                txtSynopsis?.text = txtSynopsis?.text?.substring(0,245) + "..."
             }
+            val fullSynopsis:String? = it?.synopsis
+//            if(viewModel.booksLD.value !=null){
+//                if(viewModel.booksLD.value?.synopsis?.length > 245){
+//                    txtSynopsis?.text = it.synopsis?.substring(0,245) + "..."
+//                }
+//            }
             txtCategoriesAns?.text = viewModel.booksLD.value?.category
             txtBookIDAns?.text = viewModel.booksLD.value?.id
             txtEdiAns?.text = viewModel.booksLD.value?.edition
@@ -86,6 +92,13 @@ class BookDetailFragment : Fragment() {
                     fullSynopsis!!,
                     book_id,
                     imageurl!!
+                )
+                Navigation.findNavController(it).navigate(action)
+            }
+
+            btnShowReview?.setOnClickListener{
+                val action = BookDetailFragmentDirections.actionReview(
+                    book_id
                 )
                 Navigation.findNavController(it).navigate(action)
             }

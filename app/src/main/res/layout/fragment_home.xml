@@ -45,7 +45,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/txtNameHome"
+            android:id="@+id/txtNameReivewer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -63,7 +63,7 @@
             android:layout_marginStart="16dp"
             android:text="s160420013"
             app:layout_constraintStart_toEndOf="@+id/imgProfileHome"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameHome" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNameReivewer" />
 
         <TextView
             android:id="@+id/txtGreetings"
@@ -99,13 +99,13 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/recViewHistory"
-                    app:layout_constraintEnd_toEndOf="@+id/recViewHistory"
+                    app:layout_constraintBottom_toBottomOf="@+id/recViewReview"
+                    app:layout_constraintEnd_toEndOf="@+id/recViewReview"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/recViewHistory" />
+                    app:layout_constraintTop_toTopOf="@+id/recViewReview" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recViewHistory"
+                    android:id="@+id/recViewReview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout_editor_absoluteX="0dp"
