@@ -67,7 +67,13 @@ class BookListAdapter(val bookList:ArrayList<Book>) : RecyclerView.Adapter<BookL
         val star4 = holder.view.findViewById<ImageView>(R.id.star4)
         val star5 = holder.view.findViewById<ImageView>(R.id.star5)
 
-        if(star == 1.0){
+        if(star == 0.0){
+            star1.setImageResource(R.drawable.ic_baseline_star_border_24)
+            star2.setImageResource(R.drawable.ic_baseline_star_border_24)
+            star3.setImageResource(R.drawable.ic_baseline_star_border_24)
+            star4.setImageResource(R.drawable.ic_baseline_star_border_24)
+            star5.setImageResource(R.drawable.ic_baseline_star_border_24)
+        } else if(star == 1.0){
             star1.setImageResource(R.drawable.ic_baseline_star_24)
             star2.setImageResource(R.drawable.ic_baseline_star_border_24)
             star3.setImageResource(R.drawable.ic_baseline_star_border_24)
