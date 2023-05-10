@@ -35,7 +35,7 @@ class FavoriteListAdapter(val bookList:ArrayList<Book>) : RecyclerView.Adapter<F
         txtBookName.text = bookList[position].book_name
         txtWriter.text = bookList[position].writer
         txtCategory.text = bookList[position].category
-        txtRating.text = "Rating : " + bookList[position].rate.toString()
+//        txtRating.text = "Rating : " + bookList[position].rate.toString()
 
         btnDetail.setOnClickListener{
             val action = FavoriteFragmentDirections.actionBookDetail(bookList[position].id.toString())
