@@ -1,5 +1,7 @@
 package com.ubaya.a160420013_projectanmp.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,8 +30,13 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var sharedFile = "com.ubaya.a160420013_projectanmp"
+        var shared: SharedPreferences = this.requireActivity().getSharedPreferences(sharedFile,
+            Context.MODE_PRIVATE )
+        var user_id: String? = shared.getString("user_id", "")
+
         viewModel = ViewModelProvider(this).get(FavoriteListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refresh(user_id)
 
         val recView = view?.findViewById<RecyclerView>(R.id.recViewFav)
         recView?.layoutManager = LinearLayoutManager(context)
@@ -46,7 +53,7 @@ class FavoriteFragment : Fragment() {
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
             progressLoad?.visibility = View.VISIBLE
 
-            viewModel.refresh()
+            viewModel.refresh(user_id)
             refreshLayout?.isRefreshing = false
         }
     }
@@ -54,6 +61,11 @@ class FavoriteFragment : Fragment() {
     fun observeViewModel(){
         viewModel.booksLD.observe(viewLifecycleOwner, Observer{
             favListAdapter.updateBookList(it)
+            if(it.isEmpty()){
+                (activity as MainActivity?)?.findViewById<TextView>(R.id.txtNoFav)?.visibility = View.VISIBLE
+            } else {
+                (activity as MainActivity?)?.findViewById<TextView>(R.id.txtNoFav)?.visibility = View.GONE
+            }
         })
 
         viewModel.booksLoadErrorLD.observe(viewLifecycleOwner, Observer{

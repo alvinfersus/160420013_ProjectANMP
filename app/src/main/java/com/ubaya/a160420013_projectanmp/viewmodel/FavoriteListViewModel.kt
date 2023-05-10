@@ -20,12 +20,12 @@ class FavoriteListViewModel(application: Application): AndroidViewModel(applicat
     val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-    fun refresh(){
+    fun refresh(user_id:String?){
         loadingLD.value = true
         booksLoadErrorLD.value = false
 
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/favorite_list.php?user_id=160420013"
+        val url = "http://10.0.2.2/anmp/favorite_list.php?user_id="+user_id
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,

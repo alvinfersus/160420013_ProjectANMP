@@ -7,11 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ubaya.a160420013_projectanmp.R
@@ -39,7 +41,7 @@ class ProfileFragment : Fragment() {
         viewModel.refresh(this.requireActivity(), user_id)
 
         observeViewModel(view)
-        val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
+//        val refreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
 //        refreshLayout?.setOnRefreshListener {
 //            val recView = view?.findViewById<RecyclerView>(R.id.recViewHome)
 //            recView?.visibility = View.GONE
@@ -53,6 +55,14 @@ class ProfileFragment : Fragment() {
 //            viewModel.refresh()
 //            refreshLayout?.isRefreshing = false
 //        }
+        val btnLogOut = view.findViewById<Button>(R.id.btnLogOut)
+        btnLogOut.setOnClickListener {
+            var editor: SharedPreferences.Editor? = shared?.edit()
+            editor?.putString("user_id","")
+            editor?.commit()
+            val action = ProfileFragmentDirections.actionLogin()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 
     fun observeViewModel(view: View){

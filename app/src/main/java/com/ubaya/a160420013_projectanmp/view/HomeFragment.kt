@@ -13,6 +13,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.a160420013_projectanmp.R
@@ -40,17 +41,22 @@ class HomeFragment : Fragment() {
             Context.MODE_PRIVATE )
         var user_id: String? = shared.getString("user_id", "")
 
-        viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
-        viewModel.refresh()
+        if(user_id == ""){
+            val action = HomeFragmentDirections.actionLogin()
+            Navigation.findNavController(view).navigate(action)
+        } else {
+            viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
+            viewModel.refresh()
 
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        userViewModel.refresh(this.requireActivity(), user_id)
+            userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+            userViewModel.refresh(this.requireActivity(), user_id)
 
-        val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
-        recView?.layoutManager = LinearLayoutManager(context)
-        recView?.adapter = booksListAdapter
-        observeViewModel()
-        observeUserViewModel(view)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
+            recView?.layoutManager = LinearLayoutManager(context)
+            recView?.adapter = booksListAdapter
+            observeViewModel()
+            observeUserViewModel(view)
+        }
     }
 
     fun observeViewModel(){

@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/itemProfile" />
+        <action
+            android:id="@+id/actionLogin"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemBooks"
@@ -99,7 +102,11 @@
         android:id="@+id/itemProfile"
         android:name="com.ubaya.a160420013_projectanmp.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/actionLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/readMoreFragment"
         android:name="com.ubaya.a160420013_projectanmp.view.ReadMoreFragment"

@@ -46,6 +46,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/recViewReview" />
 
+            <TextView
+                android:id="@+id/txtNoHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Books Read"
+                app:layout_constraintBottom_toBottomOf="@+id/recViewReview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

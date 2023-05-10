@@ -20,12 +20,12 @@ class HistoryListViewModel(application: Application): AndroidViewModel(applicati
     val TAG = "volleyTagHistory"
     private var queue: RequestQueue? = null
 
-    fun refresh(){
+    fun refresh(user_id:String?){
         historyLoadErrorLD.value = false
         loadingHistoryLD.value = true
 
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/history_list.php?user_id=160420013"
+        val url = "http://10.0.2.2/anmp/history_list.php?user_id="+user_id
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
