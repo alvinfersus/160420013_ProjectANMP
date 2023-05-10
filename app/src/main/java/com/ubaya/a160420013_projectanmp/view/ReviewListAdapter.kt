@@ -11,6 +11,7 @@ import com.ubaya.a160420013_projectanmp.R
 import com.ubaya.a160420013_projectanmp.model.Book
 import com.ubaya.a160420013_projectanmp.model.Review
 import com.ubaya.a160420013_projectanmp.util.loadImage
+import org.w3c.dom.Text
 import kotlin.math.floor
 
 class ReviewListAdapter(val reviewList:ArrayList<Review>) : RecyclerView.Adapter<ReviewListAdapter.ReviewViewHolder>() {
@@ -49,6 +50,9 @@ class ReviewListAdapter(val reviewList:ArrayList<Review>) : RecyclerView.Adapter
     }
 
     fun updateWholeStar(holder:ReviewViewHolder, star:Double){
+        val txtRating = holder.view.findViewById<TextView>(R.id.txtRating)
+        txtRating.text = star.toString() + " Rating"
+
         val star1 = holder.view.findViewById<ImageView>(R.id.star1)
         val star2 = holder.view.findViewById<ImageView>(R.id.star2)
         val star3 = holder.view.findViewById<ImageView>(R.id.star3)

@@ -29,7 +29,7 @@ class BookListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.refresh("1")
 
         val recView = view?.findViewById<RecyclerView>(R.id.recViewReview)
         recView?.layoutManager = LinearLayoutManager(context)
@@ -46,7 +46,7 @@ class BookListFragment : Fragment() {
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressBarBooks)
             progressLoad?.visibility = View.VISIBLE
 
-            viewModel.refresh()
+            viewModel.refresh("1")
             refreshLayout?.isRefreshing = false
         }
     }

@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(action)
         } else {
             viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
-            viewModel.refresh()
+            viewModel.refresh("3")
 
             userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
             userViewModel.refresh(this.requireActivity(), user_id)

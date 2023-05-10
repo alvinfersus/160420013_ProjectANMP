@@ -20,13 +20,13 @@ class BookListViewModel(application: Application): AndroidViewModel(application)
     val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-    fun refresh(){
+    fun refresh(num_books:String){
         loadingLD.value = true
         booksLoadErrorLD.value = false
 
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/book_list.php?book_list=1"
-
+        val url = "http://10.0.2.2/anmp/book_list.php?book_list="+num_books
+        Log.d("showvoleyBooks", num_books)
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

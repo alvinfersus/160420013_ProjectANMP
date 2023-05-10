@@ -23,9 +23,6 @@
             android:id="@+id/action_homeFragment_to_favoriteFragment2"
             app:destination="@id/itemFavorite" />
         <action
-            android:id="@+id/action_homeFragment_to_bookListFragment2"
-            app:destination="@id/itemBooks" />
-        <action
             android:id="@+id/action_homeFragment_to_historyFragment2"
             app:destination="@id/itemHistory" />
         <action
@@ -34,6 +31,9 @@
         <action
             android:id="@+id/actionLogin"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/actionBookDetail"
+            app:destination="@id/bookDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemBooks"
