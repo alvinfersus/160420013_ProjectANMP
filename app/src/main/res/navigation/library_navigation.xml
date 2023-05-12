@@ -75,20 +75,7 @@
         android:id="@+id/itemHistory"
         android:name="com.ubaya.a160420013_projectanmp.view.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" >
-        <action
-            android:id="@+id/action_historyFragment2_to_detailHistoryFragment2"
-            app:destination="@id/detailHistoryFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailHistoryFragment"
-        android:name="com.ubaya.a160420013_projectanmp.view.DetailHistoryFragment"
-        android:label="fragment_detail_history"
-        tools:layout="@layout/fragment_detail_history" >
-        <action
-            android:id="@+id/action_detailHistoryFragment_to_historyFragment"
-            app:destination="@id/itemHistory" />
-    </fragment>
+        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/itemFavorite"
         android:name="com.ubaya.a160420013_projectanmp.view.FavoriteFragment"
